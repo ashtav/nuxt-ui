@@ -161,8 +161,8 @@ const menuGroups: MenuGroup[] = [
     label: 'Form Components',
     menus: [
       { label: 'FormInput', icon: 'pencil-edit-02', path: '#form-input' },
-      { label: 'FormSearch', icon: 'search-01', path: '#' },
-      { label: 'FormSelect', icon: 'menu-square', path: '#' },
+      { label: 'FormSearch', icon: 'search-01', path: '#form-search' },
+      { label: 'FormSelect', icon: 'menu-square', path: '#form-select' },
       { label: 'FormPhoneInput', icon: 'call', path: '#' },
       { label: 'FormDatePicker', icon: 'calendar-03', path: '#' },
       { label: 'FormDateRange', icon: 'calendar-favorite-01', path: '#' },

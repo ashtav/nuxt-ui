@@ -27,10 +27,10 @@
 
           <!-- Current Breadcrumb -->
           <div class="flex items-center gap-2 text-sm font-medium">
-            <span class="text-slate-400">Nuxt UI</span>
+            <span class="text-slate-400 cursor-pointer hover:text-slate-600 dark:hover:text-slate-200" @click="handleMenuSelect('#dashboard')">Nuxt UI</span>
             <span class="text-slate-300 dark:text-slate-600">/</span>
-            <span class="text-slate-800 dark:text-white capitalize">
-              {{ currentPath === '#form-input' ? 'FormInput Showcase' : 'Dashboard' }}
+            <span class="text-slate-800 dark:text-white">
+              {{ currentPageTitle }}
             </span>
           </div>
         </div>
@@ -81,7 +81,13 @@
         <!-- ─── VIEW 1: FormInput Showcase & Documentation ────────── -->
         <FormInputDoc v-if="currentPath === '#form-input'" />
 
-        <!-- ─── VIEW 2: Dashboard Overview ────────────────────────── -->
+        <!-- ─── VIEW 2: FormSearch Showcase & Documentation ───────── -->
+        <FormSearchDoc v-else-if="currentPath === '#form-search'" />
+
+        <!-- ─── VIEW 3: FormSelect Showcase & Documentation ───────── -->
+        <FormSelectDoc v-else-if="currentPath === '#form-select'" />
+
+        <!-- ─── VIEW 4: Dashboard Overview ────────────────────────── -->
         <div v-else class="space-y-12">
           <!-- Hero Section -->
           <section class="rounded-2xl p-6 sm:p-10 border border-slate-200 dark:border-theme-border bg-white dark:bg-theme-card shadow-xs">
@@ -158,37 +164,45 @@
                 </p>
               </div>
 
-              <!-- Locked: UiModal -->
-              <div class="p-6 rounded-2xl border border-slate-200 dark:border-theme-border bg-white dark:bg-theme-card opacity-70">
+              <!-- Active Highlight: FormSearch -->
+              <div
+                @click="handleMenuSelect('#form-search')"
+                class="group p-6 rounded-2xl border-2 border-emerald-500/40 bg-emerald-50/20 dark:bg-emerald-950/20 hover:border-emerald-500 transition-all duration-200 cursor-pointer shadow-xs"
+              >
                 <div class="flex items-center justify-between mb-3">
-                  <div class="w-10 h-10 rounded-xl bg-slate-100 text-slate-500 dark:bg-theme-input dark:text-slate-400 flex items-center justify-center text-xl">
-                    <Icon name="modal" />
+                  <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-400 flex items-center justify-center text-xl">
+                    <Icon name="search-01" />
                   </div>
-                  <span class="text-xs text-slate-400 flex items-center gap-1">
-                    <Icon name="lock" class="text-xs" />
-                    <span>Locked</span>
+                  <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-600 text-white">
+                    Active Showcase
                   </span>
                 </div>
-                <h3 class="text-lg font-bold text-slate-900 dark:text-white">UiModal</h3>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">
-                  Modal dialog &amp; drawer with smooth Cupertino depth transitions (#stack slot).
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                  FormSearch
+                </h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  Debounced search emission, Enter-only search trigger mode, integrated loading spinner, instant clear action, and live event inspector.
                 </p>
               </div>
 
-              <!-- Locked: UiButton -->
-              <div class="p-6 rounded-2xl border border-slate-200 dark:border-theme-border bg-white dark:bg-theme-card opacity-70">
+              <!-- Active Highlight: FormSelect -->
+              <div
+                @click="handleMenuSelect('#form-select')"
+                class="group p-6 rounded-2xl border-2 border-emerald-500/40 bg-emerald-50/20 dark:bg-emerald-950/20 hover:border-emerald-500 transition-all duration-200 cursor-pointer shadow-xs"
+              >
                 <div class="flex items-center justify-between mb-3">
-                  <div class="w-10 h-10 rounded-xl bg-slate-100 text-slate-500 dark:bg-theme-input dark:text-slate-400 flex items-center justify-center text-xl">
-                    <Icon name="cursor-pointer" />
+                  <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-400 flex items-center justify-center text-xl">
+                    <Icon name="menu-square" />
                   </div>
-                  <span class="text-xs text-slate-400 flex items-center gap-1">
-                    <Icon name="lock" class="text-xs" />
-                    <span>Locked</span>
+                  <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-600 text-white">
+                    Active Showcase
                   </span>
                 </div>
-                <h3 class="text-lg font-bold text-slate-900 dark:text-white">UiButton</h3>
-                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">
-                  Multi-variant action buttons with built-in loading spinner, tooltip wrapper, and icons.
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                  FormSelect
+                </h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
+                  Teleported combobox select with local &amp; server-side search, custom option creation (allowCustom), scoped slots, and primitive/object normalization.
                 </p>
               </div>
             </div>
@@ -237,9 +251,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { toast } from 'vue-sonner'
 import FormInputDoc from './components/docs/FormInputDoc.vue'
+import FormSearchDoc from './components/docs/FormSearchDoc.vue'
+import FormSelectDoc from './components/docs/FormSelectDoc.vue'
 import Sidebar from './components/Sidebar.vue'
 import { copyToClipboard } from './utils/utils'
 
@@ -256,26 +272,35 @@ const radiusPresets = [
 const isSidebarOpen = ref(false)
 const currentPath = ref('#dashboard')
 
+const validPaths = ['#dashboard', '#form-input', '#form-search', '#form-select']
+
+const currentPageTitle = computed(() => {
+  switch (currentPath.value) {
+    case '#form-input':
+      return 'FormInput Showcase'
+    case '#form-search':
+      return 'FormSearch Showcase'
+    case '#form-select':
+      return 'FormSelect Showcase'
+    default:
+      return 'Dashboard'
+  }
+})
+
+const syncHash = () => {
+  const hash = window.location.hash
+  if (validPaths.includes(hash)) {
+    currentPath.value = hash
+  } else {
+    currentPath.value = '#dashboard'
+  }
+}
+
 onMounted(() => {
   initTheme()
   initSidebar()
-
-  // Sync initial hash if present
-  if (window.location.hash) {
-    if (window.location.hash === '#form-input') {
-      currentPath.value = '#form-input'
-    } else {
-      currentPath.value = '#dashboard'
-    }
-  }
-
-  window.addEventListener('hashchange', () => {
-    if (window.location.hash === '#form-input') {
-      currentPath.value = '#form-input'
-    } else {
-      currentPath.value = '#dashboard'
-    }
-  })
+  syncHash()
+  window.addEventListener('hashchange', syncHash)
 })
 
 const handleMenuSelect = (path: string) => {
