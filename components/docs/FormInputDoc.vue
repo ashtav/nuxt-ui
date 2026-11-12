@@ -326,6 +326,7 @@
 <script setup lang="ts">
 import { ref, reactive, computed } from 'vue'
 import { toast } from 'vue-sonner'
+import { copyToClipboard } from '~/utils/utils'
 
 const copied = ref(false)
 
@@ -388,3 +389,4 @@ const generatedCode = computed(() => {
   return parts.join('\n')
 })
 </script>
+

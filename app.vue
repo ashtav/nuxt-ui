@@ -62,7 +62,7 @@
       <!-- Main Body Content Area -->
       <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <!-- ─── VIEW 1: FormInput Showcase & Documentation ────────── -->
-        <DocsFormInputDoc v-if="currentPath === '#form-input'" />
+        <FormInputDoc v-if="currentPath === '#form-input'" />
 
         <!-- ─── VIEW 2: Dashboard Overview ────────────────────────── -->
         <div v-else class="space-y-12">
@@ -222,6 +222,9 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { toast } from 'vue-sonner'
+import FormInputDoc from './components/docs/FormInputDoc.vue'
+import Sidebar from './components/Sidebar.vue'
+import { copyToClipboard } from './utils/utils'
 
 const { isDark, toggleTheme, initTheme } = useTheme()
 const { isMinimized, initSidebar } = useSidebar()
