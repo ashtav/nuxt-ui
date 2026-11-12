@@ -4,6 +4,11 @@
   "description": "Universal Nuxt UI Layer with rich form and interface components",
   "type": "module",
   "main": "./nuxt.config.ts",
+  "scripts": {
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "preview": "nuxt preview"
+  },
   "files": [
     "assets",
     "components",
@@ -16,15 +21,17 @@
   ],
   "dependencies": {
     "@floating-ui/dom": "^1.8.0",
+    "@unovis/ts": "^1.8.1",
+    "@unovis/vue": "^1.8.1",
     "dayjs": "^1.11.21",
     "libphonenumber-js": "^1.13.8",
     "vue-sonner": "^2.0.9"
   },
   "devDependencies": {
-    "@unovis/ts": "^1.6.7",
-    "@unovis/vue": "^1.6.7",
-    "nuxt": "^4.0.0",
-    "sass": "^1.80.0"
+    "@nuxtjs/tailwindcss": "^6.14.0",
+    "nuxt": "^4.4.8",
+    "sass": "^1.101.0",
+    "vue": "^3.5.38"
   },
   "peerDependencies": {
     "nuxt": "^3.0.0 || ^4.0.0"

@@ -5,6 +5,10 @@ const currentDir = dirname(fileURLToPath(import.meta.url))
 
 // https://nuxt.com/docs/getting-started/layers
 export default defineNuxtConfig({
+  compatibilityDate: '2025-07-15',
+  modules: [
+    '@nuxtjs/tailwindcss'
+  ],
   components: [
     {
       path: join(currentDir, 'components/form'),
@@ -29,6 +33,12 @@ export default defineNuxtConfig({
   tailwindcss: {
     config: {
       darkMode: 'class',
+      content: [
+        join(currentDir, 'components/**/*.{vue,js,ts}'),
+        join(currentDir, 'pages/**/*.vue'),
+        join(currentDir, 'app.vue'),
+        join(currentDir, 'app/**/*.vue')
+      ],
       theme: {
         extend: {
           colors: {
