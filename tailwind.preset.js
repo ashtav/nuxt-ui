@@ -27,8 +27,19 @@ export default {
         'theme-default': 'var(--border-default)',
         'theme-card': 'var(--border-default)',
         'theme-input': 'var(--border-input)'
+      },
+      borderRadius: {
+        'sm': 'calc(var(--radius, 0.75rem) - 4px)',
+        'md': 'calc(var(--radius, 0.75rem) - 2px)',
+        'lg': 'var(--radius, 0.75rem)',
+        'xl': 'calc(var(--radius, 0.75rem) + 4px)',
+        '2xl': 'calc(var(--radius, 0.75rem) + 8px)',
+        '3xl': 'calc(var(--radius, 0.75rem) + 16px)',
+        'theme': 'var(--radius, 0.75rem)',
+        'theme-card': 'calc(var(--radius, 0.75rem) + 4px)',
+        'theme-input': 'var(--radius, 0.75rem)',
+        'theme-btn': 'var(--radius, 0.75rem)'
       }
     }
   }
 }
-

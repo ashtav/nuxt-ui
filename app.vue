@@ -37,6 +37,23 @@
 
         <!-- Right Action Controls -->
         <div class="flex items-center gap-2.5">
+          <!-- Centralized Master Radius Switcher -->
+          <div class="hidden sm:flex items-center gap-1 p-1 rounded-lg bg-slate-100 dark:bg-theme-input border border-slate-200/80 dark:border-theme-border text-[11px]">
+            <span class="px-1.5 text-slate-400 font-semibold">Radius:</span>
+            <button
+              v-for="r in radiusPresets"
+              :key="r.value"
+              type="button"
+              @click="setRadius(r.value)"
+              class="px-2 py-0.5 rounded-md font-medium transition-colors cursor-pointer"
+              :class="radius === r.value
+                ? 'bg-emerald-600 text-white shadow-2xs'
+                : 'text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-theme-hover'"
+            >
+              {{ r.label }}
+            </button>
+          </div>
+
           <a
             href="https://github.com/ashta-jb/nuxt-ui"
             target="_blank"
@@ -226,8 +243,15 @@ import FormInputDoc from './components/docs/FormInputDoc.vue'
 import Sidebar from './components/Sidebar.vue'
 import { copyToClipboard } from './utils/utils'
 
-const { isDark, toggleTheme, initTheme } = useTheme()
+const { isDark, radius, toggleTheme, setRadius, initTheme } = useTheme()
 const { isMinimized, initSidebar } = useSidebar()
+
+const radiusPresets = [
+  { label: '0', value: '0px' },
+  { label: 'SM', value: '0.35rem' },
+  { label: 'MD', value: '0.55rem' },
+  { label: 'LG', value: '0.85rem' }
+]
 
 const isSidebarOpen = ref(false)
 const currentPath = ref('#dashboard')

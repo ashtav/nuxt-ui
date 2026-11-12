@@ -1,6 +1,7 @@
 import { ref } from 'vue'
 
 const isDark = ref(false)
+const radius = ref('0.55rem')
 
 export function useTheme() {
   const setTheme = (dark: boolean, saveBackend = false) => {
@@ -17,7 +18,6 @@ export function useTheme() {
 
     if (saveBackend) {
       try {
-        // Optional backend sync if application defines global API/Auth store
         const nuxtApp = useNuxtApp?.()
         nuxtApp?.hooks?.callHook('theme:change', dark)
       } catch (err) {}
@@ -28,6 +28,13 @@ export function useTheme() {
     if (!import.meta.client) return
     const shouldSave = typeof saveBackend === 'boolean' ? saveBackend : false
     setTheme(!isDark.value, shouldSave)
+  }
+
+  const setRadius = (val: string) => {
+    if (!import.meta.client) return
+    radius.value = val
+    document.documentElement.style.setProperty('--radius', val)
+    localStorage.setItem('theme-radius', val)
   }
 
   const initTheme = () => {
@@ -43,13 +50,20 @@ export function useTheme() {
       isDark.value = false
       html.classList.remove('dark')
     }
+
+    const savedRadius = localStorage.getItem('theme-radius')
+    if (savedRadius) {
+      radius.value = savedRadius
+      html.style.setProperty('--radius', savedRadius)
+    }
   }
 
   return {
     isDark,
+    radius,
     toggleTheme,
     setTheme,
+    setRadius,
     initTheme
   }
 }
-

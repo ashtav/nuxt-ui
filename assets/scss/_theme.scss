@@ -21,6 +21,15 @@
   --border-card: var(--border-default); // Alias for compatibility
   --border-input: #d1d5db; // Input border (gray-300)
 
+  // Border Radius Tokens (Centralized Master Radius)
+  --radius: 0.55rem; /* 12px default base radius */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 16px);
+
   // Typography
   --text-primary: #0f172a; // Headings & title (slate-900)
   --text-body: #334155; // Body text & label (slate-700)
