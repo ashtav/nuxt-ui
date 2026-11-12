@@ -46,3 +46,4 @@ export function extractCoordsFromGmaps(url: string): { lat: number; lng: number 
 
   return null
 }
+
