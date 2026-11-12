@@ -80,7 +80,7 @@
                 Universal Nuxt UI Layer
               </h1>
               <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-                Kumpulan komponen form, dialog modal cupertino depth layer (<code class="text-xs bg-slate-100 dark:bg-theme-input px-1.5 py-0.5 rounded">#stack</code>), icon Hugeicons, serta design tokens siap pakai untuk semua project Nuxt 3 & 4.
+                A reusable library of form controls, Cupertino modal depth layers (<code class="text-xs bg-slate-100 dark:bg-theme-input px-1.5 py-0.5 rounded">#stack</code>), Hugeicons, and responsive design tokens ready for all Nuxt 3 &amp; 4 projects.
               </p>
 
               <div class="pt-2 flex flex-wrap items-center gap-3">
@@ -93,7 +93,7 @@
                   variant="secondary"
                   @click="copySnippet"
                 >
-                  {{ copied ? 'Tersalin!' : 'Salin Konfigurasi' }}
+                  {{ copied ? 'Copied!' : 'Copy Configuration' }}
                 </UiButton>
                 <UiButton
                   size="sm"
@@ -101,7 +101,7 @@
                   variant="primary"
                   @click="handleMenuSelect('#form-input')"
                 >
-                  Buka FormInput Showcase
+                  Explore FormInput Showcase
                 </UiButton>
               </div>
             </div>
@@ -112,10 +112,10 @@
             <div>
               <h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
                 <Icon name="grid-view" class="text-emerald-500" />
-                <span>Navigasi Komponen</span>
+                <span>Component Navigation</span>
               </h2>
               <p class="text-sm text-slate-500 dark:text-slate-400">
-                Pilih menu di sidebar sebelah kiri untuk melihat showcase dan dokumentasi masing-masing komponen.
+                Select any component from the sidebar menu to view its interactive showcase and full documentation.
               </p>
             </div>
 
@@ -130,14 +130,14 @@
                     <Icon name="pencil-edit-02" />
                   </div>
                   <span class="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-emerald-600 text-white">
-                    Showcase Aktif
+                    Active Showcase
                   </span>
                 </div>
                 <h3 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
                   FormInput
                 </h3>
                 <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">
-                  Dokumentasi lengkap, interactive playground real-time, contoh validasi, formatters (currency, phone, code), character counter, dan API props.
+                  Full API reference, real-time playground, validation states, automatic formatters (currency, phone, code), character counter, and code generator.
                 </p>
               </div>
 
@@ -154,7 +154,7 @@
                 </div>
                 <h3 class="text-lg font-bold text-slate-900 dark:text-white">UiModal</h3>
                 <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">
-                  Modal dialog & drawer dengan transisi cupertino stack depth (#stack) slot.
+                  Modal dialog &amp; drawer with smooth Cupertino depth transitions (#stack slot).
                 </p>
               </div>
 
@@ -171,7 +171,7 @@
                 </div>
                 <h3 class="text-lg font-bold text-slate-900 dark:text-white">UiButton</h3>
                 <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">
-                  Tombol multi-variant dengan built-in loading spinner, tooltip wrapper, dan icons.
+                  Multi-variant action buttons with built-in loading spinner, tooltip wrapper, and icons.
                 </p>
               </div>
             </div>
@@ -182,9 +182,9 @@
             <div>
               <h2 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
                 <Icon name="code-circle" class="text-emerald-500" />
-                <span>Formatters & Helpers Bawaan</span>
+                <span>Built-in Formatters &amp; Utilities</span>
               </h2>
-              <p class="text-sm text-slate-500 dark:text-slate-400">Tersedia otomatis di semua komponen dan halaman via Nuxt auto-import.</p>
+              <p class="text-sm text-slate-500 dark:text-slate-400">Available globally across all components and pages via Nuxt auto-imports.</p>
             </div>
 
             <div class="p-5 rounded-xl border border-slate-200 dark:border-theme-border bg-white dark:bg-theme-card">
@@ -264,7 +264,7 @@ const copied = ref(false)
 const copySnippet = async () => {
   await copyToClipboard("export default defineNuxtConfig({\n  extends: ['nuxt-ui']\n})")
   copied.value = true
-  toast.success('Konfigurasi berhasil disalin!')
+  toast.success('Configuration copied to clipboard!')
   setTimeout(() => { copied.value = false }, 2000)
 }
 </script>
