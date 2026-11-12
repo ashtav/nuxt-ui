@@ -22,7 +22,8 @@ export default defineNuxtConfig({
     },
     {
       path: join(currentDir, 'components'),
-      pathPrefix: false
+      pathPrefix: false,
+      ignore: ['Sidebar.vue', 'docs/**']
     }
   ],
   css: [
