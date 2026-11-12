@@ -1,0 +1,160 @@
+// =============================================================================
+// JEMBATAN BAHASA - THEME COLOR MAPPING
+// =============================================================================
+// Ringkasan warna inti yang benar-benar digunakan pada aplikasi (Light & Dark)
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// 1. LIGHT MODE (DEFAULT)
+// -----------------------------------------------------------------------------
+:root {
+  color-scheme: light;
+
+  // Backgrounds
+  --bg-app: #f8fafc; // Page body (slate-50)
+  --bg-card: #ffffff; // Card, Sidebar, Navbar, Modal (white)
+  --bg-hover: #f1f5f9; // Item hover (slate-100)
+  --bg-input: #ffffff; // Form input
+
+  // Borders
+  --border-default: #e2e8f0; // Global border (Sidebar, Navbar, Card, Modal, Table, Divider)
+  --border-card: var(--border-default); // Alias for compatibility
+  --border-input: #d1d5db; // Input border (gray-300)
+
+  // Typography
+  --text-primary: #0f172a; // Headings & title (slate-900)
+  --text-body: #334155; // Body text & label (slate-700)
+  --text-muted: #64748b; // Subtitle & hint (slate-500)
+  --text-subtle: #94a3b8; // Placeholder & icons (slate-400)
+
+  // Primary (Brand Emerald)
+  --primary: #10b981; // Main action button & focus ring (emerald-500)
+  --primary-hover: #059669; // Button hover & links (emerald-600)
+  --primary-soft: #ecfdf5; // Active menu background (emerald-50)
+  --date-range-bg: #d1fae5; // Calendar date range background (emerald-100)
+  --date-range-text: #065f46; // Calendar date range text (emerald-800)
+
+  // Secondary
+  --secondary-bg: #f3f4f6; // Secondary button (gray-100)
+  --secondary-text: #111827; // Secondary text (gray-900)
+
+  // Feedback & Status
+  --success: #16a34a; // Success (green-600)
+  --warning: #f59e0b; // Warning (amber-500)
+  --danger: #ef4444; // Danger / Error (red-500)
+  --info: #3b82f6; // Info (blue-500)
+
+  // Scrollbar
+  --scrollbar-thumb: #cbd5e1; // Thumb (slate-300)
+  --scrollbar-thumb-hover: #94a3b8; // Thumb hover (slate-400)
+  --scrollbar-track: transparent;
+}
+
+// -----------------------------------------------------------------------------
+// 2. DARK MODE
+// -----------------------------------------------------------------------------
+.dark,
+html.dark {
+  color-scheme: dark;
+
+  // Backgrounds
+  --bg-app: #1e2128; // Dark root background, Card in the Modal
+  --bg-card: #22252e; // Card, Sidebar, Navbar, Modal
+  --bg-hover: #262b37; // Harmonious item hover
+  --bg-input: #1e2128; // Form input
+
+  // Borders
+  --border-default: #313644; // Crisp, clearly defined dark border (Sidebar, Navbar, Card, Modal, Table, Divider)
+  --border-card: var(--border-default); // Alias for compatibility
+  --border-input: #3e4758; // Input border (dark tone)
+
+  // Typography
+  --text-primary: #ffffff; // Headings & title (white)
+  --text-body: #cbd5e1; // Body text (slate-300)
+  --text-muted: #94a3b8; // Subtitle & hint (slate-400)
+  --text-subtle: #64748b; // Placeholder & icons (slate-500)
+
+  // Primary (Brand Emerald)
+  --primary: #10b981; // Main button (emerald-500)
+  --primary-hover: #34d399; // Hover & active text (emerald-400)
+  --primary-soft: rgba(6, 78, 59, 0.4); // Active menu dark (emerald-950/40)
+  --date-range-bg: rgba(
+    16,
+    185,
+    129,
+    0.22
+  ); // Calendar date range background dark
+  --date-range-text: #6ee7b7; // Calendar date range text dark (emerald-300)
+
+  // Secondary
+  --secondary-bg: #1f2937; // Secondary button (gray-800)
+  --secondary-text: #f9fafb; // Secondary text (gray-100)
+
+  // Feedback & Status
+  --success: #22c55e; // Success (green-500)
+  --warning: #f59e0b; // Warning (amber-400)
+  --danger: #f87171; // Danger / Error (red-400)
+  --info: #60a5fa; // Info (blue-400)
+
+  // Scrollbar
+  --scrollbar-thumb: #333a48; // Sleek dark thumb
+  --scrollbar-thumb-hover: #485265; // Subtle hover state
+  --scrollbar-track: #1e2128; // Matches dark page content background #1e2128
+}
+
+// -----------------------------------------------------------------------------
+// Global Theme Utility Helpers
+// -----------------------------------------------------------------------------
+.border-theme-border,
+.border-theme-default,
+.border-theme-card,
+.dark .dark\:border-theme-border,
+.dark .border-theme-border {
+  border-color: var(--border-default) !important;
+}
+
+.divide-theme-border > :not([hidden]) ~ :not([hidden]),
+.divide-theme-default > :not([hidden]) ~ :not([hidden]),
+.divide-theme-card > :not([hidden]) ~ :not([hidden]) {
+  border-color: var(--border-default) !important;
+}
+
+.border-theme-input {
+  border-color: var(--border-input) !important;
+}
+
+.bg-theme-app,
+.dark .dark\:bg-theme-app,
+.dark .bg-theme-app {
+  background-color: var(--bg-app);
+}
+
+.bg-theme-card,
+.dark .dark\:bg-theme-card,
+.dark .bg-theme-card {
+  background-color: var(--bg-card);
+}
+
+.bg-theme-hover,
+.hover\:bg-theme-hover:hover,
+.dark .dark\:bg-theme-hover,
+.dark .dark\:hover\:bg-theme-hover:hover {
+  background-color: var(--bg-hover);
+}
+
+.bg-theme-border {
+  background-color: var(--border-default) !important;
+}
+
+.bg-theme-input,
+.dark .dark\:bg-theme-input {
+  background-color: var(--bg-input) !important;
+}
+
+.bg-theme-range {
+  background-color: var(--date-range-bg) !important;
+}
+
+.text-theme-range {
+  color: var(--date-range-text) !important;
+}

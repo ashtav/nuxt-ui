@@ -1,0 +1,12 @@
+// Place your Sass variables here
+
+/* Custom Table2 Design System Variables */
+:root {
+  --dt-sticky-head-bg: #ffffff;
+  --dt-border-color: #e2e8f0;
+}
+
+.dark {
+  --dt-sticky-head-bg: var(--bg-app); /* Matches dark page background */
+  --dt-border-color: #1e293b;
+}
