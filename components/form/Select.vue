@@ -165,13 +165,15 @@ export interface ComboboxOption {
   [key: string]: any
 }
 
+export type SelectOptionItem = ComboboxOption | string | number
+
 interface Props {
   label?: string
   hint?: string
   required?: boolean
   disabled?: boolean
   readonly?: boolean
-  options: ComboboxOption[]
+  options: SelectOptionItem[]
   placeholder?: string
   searchPlaceholder?: string
   emptyText?: string
@@ -332,10 +334,21 @@ const scrollToActive = () => {
   })
 }
 
+// Normalise options so arrays of plain strings/numbers work seamlessly alongside objects
+const normalizedOptions = computed<ComboboxOption[]>(() => {
+  if (!props.options || !Array.isArray(props.options)) return []
+  return props.options.map((opt) => {
+    if (typeof opt === 'string' || typeof opt === 'number') {
+      return { label: String(opt), value: opt }
+    }
+    return opt
+  })
+})
+
 // Derive selected label from modelValue
 const customLabel = ref('')
 const selectedOption = computed(() => {
-  return props.options.find((o) => o.value === modelValue.value) || null
+  return normalizedOptions.value.find((o) => o.value === modelValue.value) || null
 })
 const selectedLabel = computed(() => {
   const found = selectedOption.value
@@ -354,10 +367,10 @@ watch(modelValue, (newVal) => {
 
 // In local mode: filter by query. In server-side mode: pass all options through (parent handles filtering)
 const displayedOptions = computed(() => {
-  if (isServerSide.value) return props.options
-  if (!query.value.trim()) return props.options
+  if (isServerSide.value) return normalizedOptions.value
+  if (!query.value.trim()) return normalizedOptions.value
   const q = query.value.trim().toLowerCase()
-  return props.options.filter((o) => {
+  return normalizedOptions.value.filter((o) => {
     if (o.label && o.label.toLowerCase().includes(q)) return true
     if (typeof o.code === 'string' && o.code.toLowerCase().includes(q)) return true
     if (typeof o.subtext === 'string' && o.subtext.toLowerCase().includes(q)) return true
@@ -384,7 +397,7 @@ const openDropdown = () => {
   query.value = ''
   activeIndex.value = Math.max(
     0,
-    props.options.findIndex((o) => o.value === modelValue.value)
+    normalizedOptions.value.findIndex((o) => o.value === modelValue.value)
   )
   updateDropdownPosition()
   nextTick(() => {

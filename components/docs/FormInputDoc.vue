@@ -86,12 +86,12 @@
               <FormSelect
                 v-model="playground.prefixIcon"
                 label="Prefix Icon"
-                :options="['user', 'mail-01', 'lock', 'search-01', 'call', 'link-01', 'calendar-03', 'globe', 'none']"
+                :options="iconOptions"
               />
               <FormSelect
                 v-model="playground.formatter"
                 label="Formatter"
-                :options="['none', 'ucwords', 'ucfirst', 'currency', 'phone', 'letters', 'numeric', 'upper', 'code']"
+                :options="formatterOptions"
               />
             </div>
 
@@ -333,6 +333,30 @@ import { toast } from 'vue-sonner'
 import { copyToClipboard } from '~/utils/utils'
 
 const copied = ref(false)
+
+const iconOptions = [
+  { label: 'None', value: 'none' },
+  { label: 'User (user)', value: 'user' },
+  { label: 'Mail (mail-01)', value: 'mail-01' },
+  { label: 'Lock (lock)', value: 'lock' },
+  { label: 'Search (search-01)', value: 'search-01' },
+  { label: 'Phone (call)', value: 'call' },
+  { label: 'Link (link-01)', value: 'link-01' },
+  { label: 'Calendar (calendar-03)', value: 'calendar-03' },
+  { label: 'Globe (globe)', value: 'globe' }
+]
+
+const formatterOptions = [
+  { label: 'None', value: 'none' },
+  { label: 'Currency (1.000.000)', value: 'currency' },
+  { label: 'Phone (0812 3456)', value: 'phone' },
+  { label: 'Title Case (ucwords)', value: 'ucwords' },
+  { label: 'Sentence Case (ucfirst)', value: 'ucfirst' },
+  { label: 'Letters Only (letters)', value: 'letters' },
+  { label: 'Numeric Digits (numeric)', value: 'numeric' },
+  { label: 'Uppercase Code (code)', value: 'code' },
+  { label: 'Uppercase (upper)', value: 'upper' }
+]
 
 const playground = reactive({
   value: 'Ashta Developer',
