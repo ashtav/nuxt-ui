@@ -25,6 +25,8 @@ const ALIASES: Record<string, string> = {
     'lock-unlocked-01': 'square-unlock-02',
     'lock-unlocked-02': 'square-unlock-02',
     'unlocked': 'square-unlock-02',
+    'eye': 'view',
+    'eye-off': 'view-off',
     'calendar-check-01': 'calendar-check-in-01',
     'calendar-check': 'calendar-check-in-01',
     'user-id': 'user-id-verification',

@@ -21,7 +21,7 @@
           readonly ? 'cursor-default select-none focus:ring-0 focus:border-theme-input' : '',
           error
             ? 'border-red-500 dark:border-red-500 focus:ring-red-500 focus:border-red-500 bg-red-50/10 dark:bg-red-950/10'
-            : 'border-theme-input bg-theme-input focus:ring-emerald-500 focus:border-emerald-500',
+            : 'border-theme-input bg-theme-input focus:ring-theme-primary focus:border-theme-primary',
           leftPaddingClass,
           rightPaddingClass,
           loading ? 'text-transparent select-none placeholder-transparent pointer-events-none' : ''

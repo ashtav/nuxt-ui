@@ -22,7 +22,7 @@
         :class="[
           'px-3 py-2 rounded-lg text-xs font-medium transition flex items-center gap-2 select-none border',
           isSelected(option.value)
-            ? 'bg-emerald-500 text-white border-emerald-500 shadow-sm shadow-emerald-500/20'
+            ? 'bg-theme-primary text-white border-theme-primary shadow-sm shadow-theme-primary/20'
             : 'bg-white dark:bg-theme-card text-slate-700 dark:text-slate-300 border-slate-200 dark:border-theme-border hover:bg-slate-50 dark:hover:bg-theme-hover cursor-pointer',
           (disabled || option.disabled) ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
         ]"
@@ -32,7 +32,7 @@
           :class="[
             'w-4 h-4 rounded-[4px] flex items-center justify-center border text-[10px] shrink-0 transition-all',
             isSelected(option.value)
-              ? 'bg-white border-white text-emerald-600'
+              ? 'bg-white border-white text-theme-primary'
               : 'border-slate-300 dark:border-slate-600 bg-slate-100/80 dark:bg-theme-app'
           ]"
         >
@@ -45,7 +45,7 @@
             stroke-width="3.5"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="w-2.5 h-2.5 text-emerald-600"
+            class="w-2.5 h-2.5 text-theme-primary"
           >
             <path d="M20 6 9 17l-5-5" />
           </svg>

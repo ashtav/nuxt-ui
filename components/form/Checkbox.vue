@@ -17,18 +17,23 @@
           <input :id="`${groupId}-${option.value}`" type="checkbox" :name="groupId" :value="option.value"
             :checked="modelValue.includes(option.value)" :disabled="disabled || option.disabled"
             @change="handleChange(option, $event)"
-            class="peer absolute inset-0 h-4 w-4 shrink-0 appearance-none rounded-[4px] border transition-all focus:outline-none focus:ring-2 focus:ring-emerald-500 disabled:cursor-not-allowed cursor-pointer"
+            class="peer sr-only" />
+          <div
+            class="h-4 w-4 rounded-[4px] border transition-all flex items-center justify-center border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-theme-app peer-focus:ring-2 peer-focus:ring-theme-primary/30"
             :class="[
               modelValue.includes(option.value)
-                ? 'border-emerald-500 bg-emerald-500'
-                : 'border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-theme-app hover:border-slate-400 dark:hover:border-slate-500'
-            ]" />
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
-            class="pointer-events-none h-3 w-3 text-white transition-all duration-150 relative z-10"
-            :class="[modelValue.includes(option.value) ? 'scale-100 opacity-100' : 'scale-0 opacity-0']">
-            <path d="M20 6 9 17l-5-5" />
-          </svg>
+                ? '!border-[#2c3e2d] !bg-[#2c3e2d] dark:!border-[#7d9e7e] dark:!bg-[#7d9e7e]'
+                : 'hover:border-slate-400 dark:hover:border-slate-500'
+            ]"
+            :style="modelValue.includes(option.value) ? { backgroundColor: 'var(--primary, #2c3e2d)', borderColor: 'var(--primary, #2c3e2d)' } : undefined"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+              class="pointer-events-none h-3 w-3 text-white dark:text-[#141d14] transition-all duration-150"
+              :class="[modelValue.includes(option.value) ? 'scale-100 opacity-100' : 'scale-0 opacity-0']">
+              <path d="M20 6 9 17l-5-5" />
+            </svg>
+          </div>
         </span>
         <span v-if="option.description" class="select-none leading-normal flex-1" v-html="option.description"></span>
         <span v-else class="select-none leading-normal flex-1">{{ option.label }}</span>

@@ -20,8 +20,8 @@
           error
             ? 'border-red-500 dark:border-red-500 focus:ring-red-500 focus:border-red-500 bg-red-50/10 dark:bg-red-950/10'
             : isLight
-              ? 'border-slate-200 bg-white hover:bg-slate-50 text-slate-800 focus:ring-emerald-500 focus:border-emerald-500'
-              : 'border-theme-input bg-theme-input text-slate-900 dark:text-white focus:ring-emerald-500 focus:border-emerald-500'
+              ? 'border-slate-200 bg-white hover:bg-slate-50 text-slate-800 focus:ring-theme-primary focus:border-theme-primary'
+              : 'border-theme-input bg-theme-input text-slate-900 dark:text-white focus:ring-theme-primary focus:border-theme-primary'
         ]">
         <span class="truncate pr-4 flex-1 min-w-0 text-left" :class="!selectedLabel && (isLight ? 'text-slate-400' : 'text-slate-400 dark:text-slate-500')">
           <slot name="selected" :option="selectedOption">

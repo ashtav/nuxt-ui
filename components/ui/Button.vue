@@ -183,21 +183,21 @@ const sizeClasses = computed(() => {
 const variantClasses = computed(() => {
   switch (props.variant) {
     case 'primary':
-      return 'bg-emerald-500 text-white hover:bg-emerald-600 focus:ring-emerald-500 shadow-sm'
+      return 'bg-theme-primary text-white hover:bg-theme-primary-hover focus:ring-theme-primary shadow-sm'
     case 'secondary':
       return 'bg-slate-100 text-slate-900 hover:bg-slate-200 focus:ring-slate-400 dark:bg-theme-card dark:text-slate-100 dark:hover:bg-theme-hover border border-theme-border shadow-sm'
     case 'success':
-      return 'bg-green-600 text-white hover:bg-green-700 focus:ring-green-500 shadow-sm'
+      return 'bg-emerald-600 text-white hover:bg-emerald-700 focus:ring-emerald-500 shadow-sm'
     case 'warning':
       return 'bg-amber-500 text-white hover:bg-amber-600 focus:ring-amber-500 shadow-sm'
     case 'danger':
       return 'bg-red-600 text-white hover:bg-red-700 focus:ring-red-500 shadow-sm'
     case 'outline':
-      return 'border border-theme-border bg-theme-card text-slate-800 dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-theme-hover focus:ring-emerald-500'
+      return 'border border-theme-border bg-theme-card text-slate-800 dark:text-slate-100 hover:bg-slate-50 dark:hover:bg-theme-hover focus:ring-theme-primary'
     case 'ghost':
       return 'bg-transparent text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-theme-hover focus:ring-slate-400'
     case 'link':
-      return 'bg-transparent text-emerald-600 dark:text-emerald-400 hover:underline focus:ring-emerald-500 h-auto px-0 shadow-none'
+      return 'bg-transparent text-theme-primary hover:underline focus:ring-theme-primary h-auto px-0 shadow-none'
     default:
       return ''
   }

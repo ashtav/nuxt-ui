@@ -1,5 +1,6 @@
 @use "./theme" as *;
 @use "./variable" as *;
+@use "./driver";
 
 html {
   color-scheme: light;
@@ -37,6 +38,7 @@ html.modal-open body {
 ::view-transition-new(root) {
   z-index: 9999;
 }
+
 
 html, body {
   background-color: var(--bg-app);
@@ -77,7 +79,12 @@ a.underline,
   text-decoration: underline !important;
 }
 
-/* Webkit browser scrollbars */
+// for debugging purpose
+.x {
+  border: 1px red solid !important;
+}
+
+/* Webkit browser scrollbars (Chromium, Edge, Safari, Opera) */
 html::-webkit-scrollbar,
 body::-webkit-scrollbar,
 ::-webkit-scrollbar {
@@ -124,7 +131,7 @@ html.dark::-webkit-scrollbar-thumb:hover,
   background-color: var(--scrollbar-thumb-hover);
 }
 
-/* Standard W3C scrollbar fallback */
+/* Standard W3C scrollbar fallback (Firefox & browsers without -webkit-scrollbar) */
 @supports not selector(::-webkit-scrollbar) {
   html,
   body,
@@ -172,7 +179,69 @@ html.dark::-webkit-scrollbar-thumb:hover,
   scrollbar-width: none !important;
 }
 
-/* Rich Text Editor Content Styling overrides */
+/* Hover copy behavior for all Toast icons */
+[data-sonner-toast] [data-icon] {
+  position: relative !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+[data-sonner-toast] [data-icon] svg {
+  transition: opacity 0.15s ease-in-out !important;
+}
+
+[data-sonner-toast] [data-icon]:hover svg {
+  opacity: 0 !important;
+}
+
+[data-sonner-toast] [data-icon]::before {
+  content: "䋉" !important;
+  font-family: "hugeicons-stroke-rounded" !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  line-height: 1 !important;
+  font-size: 1.15rem !important;
+  color: currentColor !important;
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  opacity: 0 !important;
+  transition: opacity 0.15s ease-in-out !important;
+  pointer-events: none !important;
+}
+
+[data-sonner-toast] [data-icon]:hover::before {
+  opacity: 1 !important;
+}
+
+/* Copied state (shows checkmark icon "妕" / tick-02 in emerald green) */
+[data-sonner-toast] [data-icon].copied svg {
+  opacity: 0 !important;
+}
+
+[data-sonner-toast] [data-icon].copied::before {
+  content: "妕" !important;
+  font-family: "hugeicons-stroke-rounded" !important;
+  font-style: normal !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  line-height: 1 !important;
+  font-size: 1.15rem !important;
+  color: currentColor !important;
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  opacity: 1 !important;
+  transition: opacity 0.15s ease-in-out !important;
+  pointer-events: none !important;
+}
+
+/* Rich Text Editor Content Styling overrides (Tailwind Preflight List Resets) */
 .rich-text-content {
   ul {
     list-style-type: disc !important;
@@ -216,3 +285,8 @@ html.dark::-webkit-scrollbar-thumb:hover,
   }
 }
 
+/* Hide Google reCAPTCHA floating badge */
+.grecaptcha-badge {
+  visibility: hidden !important;
+  pointer-events: none !important;
+}

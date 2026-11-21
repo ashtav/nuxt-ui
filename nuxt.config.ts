@@ -7,6 +7,7 @@ const currentDir = dirname(fileURLToPath(import.meta.url))
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   modules: [
+    join(currentDir, 'modules/theme'),
     '@nuxtjs/tailwindcss'
   ],
   components: [

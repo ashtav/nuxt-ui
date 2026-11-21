@@ -4,6 +4,15 @@ const isDark = ref(false)
 const radius = ref('0.55rem')
 
 export function useTheme() {
+  const getConfigDefaults = () => {
+    try {
+      const config = useRuntimeConfig?.()
+      return config?.public?.nuxtUi || { radius: '0.55rem', defaultTheme: 'system' }
+    } catch {
+      return { radius: '0.55rem', defaultTheme: 'system' }
+    }
+  }
+
   const setTheme = (dark: boolean, saveBackend = false) => {
     if (!import.meta.client) return
     isDark.value = dark
@@ -39,11 +48,16 @@ export function useTheme() {
 
   const initTheme = () => {
     if (!import.meta.client) return
+    const defaults = getConfigDefaults()
     const savedTheme = localStorage.getItem('theme')
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-    
+
     const html = document.documentElement
-    if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+    const shouldBeDark =
+      savedTheme === 'dark' ||
+      (!savedTheme && (defaults.defaultTheme === 'dark' || (defaults.defaultTheme === 'system' && systemPrefersDark)))
+
+    if (shouldBeDark) {
       isDark.value = true
       html.classList.add('dark')
     } else {
@@ -51,11 +65,9 @@ export function useTheme() {
       html.classList.remove('dark')
     }
 
-    const savedRadius = localStorage.getItem('theme-radius')
-    if (savedRadius) {
-      radius.value = savedRadius
-      html.style.setProperty('--radius', savedRadius)
-    }
+    const activeRadius = localStorage.getItem('theme-radius') || defaults.radius || '0.55rem'
+    radius.value = activeRadius
+    html.style.setProperty('--radius', activeRadius)
   }
 
   return {

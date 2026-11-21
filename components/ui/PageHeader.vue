@@ -28,9 +28,10 @@
             <UiDropdownMenu v-if="action.children && action.children.length > 0" :options="action.children"
               align="right" width="w-48" v-slot="{ open }">
               <button type="button" :disabled="action.disabled || action.loading" :class="[
-                'h-9 rounded-lg transition-all flex items-center justify-center gap-1.5 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer',
+                'h-9 rounded-lg transition-all flex items-center justify-center gap-1.5 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2',
                 getPaddingClasses(action),
-                getVariantClasses(action.variant)
+                getVariantClasses(action.variant),
+                action.class || ''
               ]">
                 <svg v-if="action.loading" class="animate-spin h-3.5 w-3.5 text-current flex-shrink-0" fill="none"
                   viewBox="0 0 24 24">
@@ -52,10 +53,11 @@
             <!-- Standard Single Button Action -->
             <!-- fab=true: hidden on mobile (rendered as FAB via Teleport), shown on md+ -->
             <button v-else type="button" :disabled="action.disabled || action.loading" @click="action.onClick" :class="[
-              'h-9 rounded-lg transition-all items-center justify-center gap-1.5 disabled:opacity-50 disabled:cursor-not-allowed',
+              'h-9 rounded-lg transition-all items-center justify-center gap-1.5 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2',
               action.fab ? 'hidden md:flex' : 'flex',
               getPaddingClasses(action),
-              getVariantClasses(action.variant)
+              getVariantClasses(action.variant),
+              action.class || ''
             ]">
               <svg v-if="action.loading" class="animate-spin h-3.5 w-3.5 text-current flex-shrink-0" fill="none"
                 viewBox="0 0 24 24">
@@ -81,9 +83,10 @@
     <template v-for="(action, index) in fabActions" :key="`fab-${index}`">
       <button v-if="action.show !== false" type="button" :disabled="action.disabled || action.loading"
         @click="action.onClick" :title="action.label" :class="[
-          'md:hidden fixed right-5 z-30 w-14 h-14 rounded-full shadow-xl flex items-center justify-center transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed',
+          'md:hidden fixed right-5 z-30 w-14 h-14 rounded-full shadow-xl flex items-center justify-center transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2',
           action.safeArea ? 'bottom-[calc(4.75rem+env(safe-area-inset-bottom,0px))]' : 'bottom-6',
-          getVariantClasses(action.variant)
+          getVariantClasses(action.variant),
+          action.class || ''
         ]">
         <svg v-if="action.loading" class="animate-spin h-5 w-5 text-current flex-shrink-0" fill="none"
           viewBox="0 0 24 24">
@@ -108,7 +111,8 @@ onMounted(() => {
 export interface HeaderAction {
   label: string
   icon?: string
-  variant?: 'primary' | 'secondary' | 'danger' | 'warning'
+  variant?: 'primary' | 'secondary' | 'danger' | 'warning' | 'success'
+  class?: string
   onClick?: (event?: MouseEvent) => void
   show?: boolean
   disabled?: boolean
@@ -156,13 +160,14 @@ const getLabelClasses = (action: HeaderAction) => {
   return 'inline-block'
 }
 
-const getVariantClasses = (variant?: 'primary' | 'secondary' | 'danger' | 'warning') => {
-  const styles = {
-    primary: 'bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white',
-    secondary: 'bg-white hover:bg-slate-50 dark:bg-theme-card dark:hover:bg-theme-hover border border-slate-200 dark:border-theme-border text-slate-700 dark:text-slate-200',
-    danger: 'bg-red-600 hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600 text-white',
-    warning: 'bg-amber-500 hover:bg-amber-650 dark:bg-amber-500 dark:hover:bg-amber-600 text-white'
+const getVariantClasses = (variant?: 'primary' | 'secondary' | 'danger' | 'warning' | 'success') => {
+  const styles: Record<string, string> = {
+    primary: 'bg-theme-primary hover:bg-theme-primary-hover focus:ring-theme-primary text-white shadow-sm',
+    secondary: 'bg-white hover:bg-slate-50 dark:bg-theme-card dark:hover:bg-theme-hover border border-slate-200 dark:border-theme-border text-slate-700 dark:text-slate-200 shadow-sm',
+    danger: 'bg-red-600 hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600 focus:ring-red-500 text-white shadow-sm',
+    warning: 'bg-amber-500 hover:bg-amber-600 dark:bg-amber-500 dark:hover:bg-amber-600 focus:ring-amber-500 text-white shadow-sm',
+    success: 'bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 focus:ring-emerald-500 text-white shadow-sm'
   }
-  return styles[variant || 'primary']
+  return styles[variant || 'primary'] || styles.primary
 }
 </script>

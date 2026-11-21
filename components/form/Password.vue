@@ -15,9 +15,15 @@
         :class="[
           error
             ? 'border-red-500 dark:border-red-500 focus:ring-red-500 focus:border-red-500 bg-red-50/10 dark:bg-red-950/10'
-            : 'border-theme-input bg-theme-input focus:ring-emerald-500 focus:border-emerald-500',
-          generator ? 'pl-3 pr-20' : 'pl-3 pr-10'
+            : 'border-theme-input bg-theme-input focus:ring-theme-primary focus:border-theme-primary',
+          prefixIcon ? 'pl-9' : 'pl-3',
+          generator ? 'pr-20' : 'pr-10'
         ]" />
+
+      <!-- Prefix Icon -->
+      <div v-if="prefixIcon" class="absolute left-3 top-1/2 -translate-y-1/2 flex items-center pointer-events-none text-slate-400 dark:text-slate-500">
+        <Icon :name="prefixIcon" size="sm" />
+      </div>
 
       <!-- Generator button (Access icon) -->
       <button v-if="generator" ref="accessButtonRef" type="button" @click="toggleGeneratorOptions"
@@ -136,6 +142,7 @@ interface Props {
   maxLength?: string | number
   required?: boolean
   error?: string | boolean
+  prefixIcon?: string
   generator?: boolean | {
     length?: number
     includeSymbols?: boolean
@@ -148,6 +155,7 @@ const props = withDefaults(defineProps<Props>(), {
   hint: '',
   required: false,
   error: false,
+  prefixIcon: '',
   generator: false
 })
 

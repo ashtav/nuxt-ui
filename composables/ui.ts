@@ -231,4 +231,14 @@ export const ui = {
 
 export { confirm, alert, loading, closeLoading }
 
-export const useUi = () => ui
+export const useUi = () => ui
+
+export type { Column, TableColumn, Breakpoint, ColumnHeaderAction } from '../components/Table.vue'
+export type { ActiveFilterItem } from '../components/ui/ActiveFilters.vue'
+export type { ComboboxOption } from '../components/form/Select.vue'
+export type { DropdownItem } from '../components/ui/DropdownMenu.vue'
+export type { HeaderAction } from '../components/ui/PageHeader.vue'
+export type { ModalAction, ModalTab } from '../components/ui/Modal.vue'
+export type { PillOption } from '../components/form/CheckboxPill.vue'
+export type { RadioPillOption } from '../components/form/RadioPill.vue'
+export type { SliderTick } from '../components/form/Slider.vue'

@@ -24,11 +24,12 @@
             type="checkbox"
             v-model="modelValue"
             :disabled="disabled || readonly"
-            class="peer absolute inset-0 shrink-0 appearance-none rounded-[4px] border transition-all focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 dark:focus:ring-offset-theme-app disabled:cursor-not-allowed cursor-pointer"
+            class="peer absolute inset-0 shrink-0 appearance-none rounded-[4px] border transition-all focus:outline-none focus:ring-2 focus:ring-theme-primary/30 focus:ring-offset-2 dark:focus:ring-offset-theme-app disabled:cursor-not-allowed cursor-pointer"
+            :style="modelValue ? { backgroundColor: 'var(--primary, #2c3e2d)', borderColor: 'var(--primary, #2c3e2d)' } : undefined"
             :class="[
               size === 'sm' ? 'h-3.5 w-3.5' : 'h-4 w-4',
               modelValue
-                ? (disabled || readonly ? 'border-emerald-600/80 bg-emerald-600/80 dark:border-emerald-500/80 dark:bg-emerald-500/80' : 'border-emerald-500 bg-emerald-500')
+                ? (disabled || readonly ? 'border-theme-primary/80 bg-theme-primary/80' : 'border-theme-primary bg-theme-primary')
                 : (disabled || readonly ? 'border-slate-300 dark:border-slate-600 bg-slate-100 dark:bg-theme-input' : 'border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-theme-app hover:border-slate-400 dark:hover:border-slate-500')
             ]"
           />

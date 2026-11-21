@@ -213,6 +213,7 @@ const menuGroups: MenuGroup[] = [
   {
     label: 'Core & Utilities',
     menus: [
+      { label: 'Table', icon: 'layout-table-02', path: '#' },
       { label: 'Icon (Hugeicons)', icon: 'star', path: '#' },
       { label: 'Label', icon: 'text', path: '#' },
       { label: 'Formatters', icon: 'code-circle', path: '#' }

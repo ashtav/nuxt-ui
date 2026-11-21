@@ -27,14 +27,16 @@
           <input :id="`${groupId}-${option.value}`" type="radio" :name="groupId" :value="option.value"
             :checked="modelValue === option.value" :disabled="disabled || option.disabled" :required="required"
             @change="handleChange(option)"
-            class="peer absolute inset-0 h-4 w-4 shrink-0 appearance-none rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-emerald-500/60 dark:focus:ring-emerald-400/60 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-theme-card disabled:cursor-not-allowed cursor-pointer"
+            class="peer absolute inset-0 h-4 w-4 shrink-0 appearance-none rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-theme-primary/30 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-theme-card disabled:cursor-not-allowed cursor-pointer"
+            :style="modelValue === option.value ? { borderColor: 'var(--primary, #2c3e2d)', backgroundColor: 'var(--primary-soft, #eff3ef)' } : undefined"
             :class="[
               modelValue === option.value
-                ? 'border-2 border-emerald-500 dark:border-emerald-400 bg-emerald-50/20 dark:bg-emerald-950/40'
+                ? 'border-2 border-theme-primary bg-theme-primary-soft'
                 : 'border border-slate-300 dark:border-slate-600 bg-white dark:bg-theme-app hover:border-slate-400 dark:hover:border-slate-500'
             ]" />
           <span
-            class="pointer-events-none h-2 w-2 rounded-full bg-emerald-500 dark:bg-emerald-400 transition-all duration-150"
+            class="pointer-events-none h-2 w-2 rounded-full bg-theme-primary transition-all duration-150"
+            :style="modelValue === option.value ? { backgroundColor: 'var(--primary, #2c3e2d)' } : undefined"
             :class="modelValue === option.value ? 'scale-100 opacity-100' : 'scale-0 opacity-0'" />
         </span>
         <span class="select-none leading-normal font-normal"

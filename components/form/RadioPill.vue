@@ -22,7 +22,7 @@
         :class="[
           'px-3 py-2 rounded-lg text-xs font-medium transition flex items-center gap-2 select-none border',
           isSelected(option.value)
-            ? 'bg-emerald-500 text-white border-emerald-500 shadow-sm shadow-emerald-500/20'
+            ? 'bg-theme-primary text-white border-theme-primary shadow-sm shadow-theme-primary/20'
             : 'bg-white dark:bg-theme-card text-slate-700 dark:text-slate-300 border-slate-200 dark:border-theme-border hover:bg-slate-50 dark:hover:bg-theme-hover cursor-pointer',
           (disabled || option.disabled) ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'
         ]"
@@ -39,7 +39,7 @@
           <!-- Inner circle dot when selected -->
           <span
             v-if="isSelected(option.value)"
-            class="w-1.5 h-1.5 rounded-full bg-emerald-600"
+            class="w-1.5 h-1.5 rounded-full bg-theme-primary"
           ></span>
         </span>
 
