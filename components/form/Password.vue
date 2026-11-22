@@ -8,7 +8,7 @@
     </label>
 
     <!-- Input wrapper -->
-    <div class="relative w-full">
+    <div class="relative w-full flex items-center">
       <input :id="inputId" ref="inputRef" autocomplete="new-password" v-bind="$attrs" :type="showPassword ? 'text' : 'password'" :value="modelValue"
         :required="required" :maxlength="maxLength" @input="modelValue = ($event.target as HTMLInputElement).value"
         class="flex h-9 w-full rounded-lg border py-2 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 transition-all focus:outline-none focus:ring-2 disabled:cursor-not-allowed disabled:opacity-50"
@@ -17,32 +17,35 @@
             ? 'border-red-500 dark:border-red-500 focus:ring-red-500 focus:border-red-500 bg-red-50/10 dark:bg-red-950/10'
             : 'border-theme-input bg-theme-input focus:ring-theme-primary focus:border-theme-primary',
           prefixIcon ? 'pl-9' : 'pl-3',
-          generator ? 'pr-20' : 'pr-10'
+          generator ? 'pr-16' : 'pr-9'
         ]" />
 
       <!-- Prefix Icon -->
-      <div v-if="prefixIcon" class="absolute left-3 top-1/2 -translate-y-1/2 flex items-center pointer-events-none text-slate-400 dark:text-slate-500">
+      <div v-if="prefixIcon" class="absolute left-3 flex items-center pointer-events-none text-slate-400 dark:text-slate-400">
         <Icon :name="prefixIcon" size="sm" />
       </div>
 
-      <!-- Generator button (Access icon) -->
-      <button v-if="generator" ref="accessButtonRef" type="button" @click="toggleGeneratorOptions"
-        class="absolute right-11 top-1/2 -translate-y-1/2 flex items-center text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-350 focus:outline-none"
-        :class="{ 'text-emerald-500 dark:text-emerald-400': showGeneratorOptions }" tabindex="-1"
-        title="Generate Password">
-        <Icon name="access" size="xs" />
-      </button>
+      <!-- Suffix actions (Generator & Visibility) -->
+      <div class="absolute right-2 flex items-center gap-1 z-10">
+        <!-- Generator button (Access icon) -->
+        <button v-if="generator" ref="accessButtonRef" type="button" @click="toggleGeneratorOptions"
+          class="flex items-center justify-center h-6 w-6 rounded text-slate-400 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-theme-hover transition-colors focus:outline-none cursor-pointer"
+          :class="{ '!text-emerald-500 dark:!text-emerald-400': showGeneratorOptions }" tabindex="-1"
+          title="Generate Password">
+          <Icon name="access" size="xs" />
+        </button>
 
-      <!-- Toggle visibility button -->
-      <button type="button" @click="showPassword = !showPassword"
-        class="absolute right-3 top-1/2 -translate-y-1/2 flex items-center text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-350 focus:outline-none"
-        tabindex="-1">
-        <Icon :name="showPassword ? 'view-off' : 'view'" size="xs" />
-      </button>
+        <!-- Toggle visibility button -->
+        <button type="button" @click="showPassword = !showPassword"
+          class="flex items-center justify-center h-6 w-6 rounded text-slate-400 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-theme-hover transition-colors focus:outline-none cursor-pointer"
+          tabindex="-1">
+          <Icon :name="showPassword ? 'view-off' : 'view'" size="xs" />
+        </button>
+      </div>
 
       <!-- Generator Options Popover -->
       <div v-if="generator && showGeneratorOptions" ref="popoverRef"
-        class="absolute z-50 right-0 mt-1 w-64 p-4 bg-theme-card border border-theme-border rounded-xl shadow-xl flex flex-col gap-3 text-left animate-in fade-in slide-in-from-top-1 duration-150">
+        class="absolute z-50 right-0 top-full mt-1.5 w-64 p-4 bg-theme-card border border-theme-border rounded-xl shadow-xl flex flex-col gap-3 text-left animate-in fade-in slide-in-from-top-1 duration-150">
         <div class="flex items-center justify-between border-b border-theme-border pb-1.5">
           <span class="text-xs text-slate-700 dark:text-slate-200 flex items-center gap-1.5">
             <Icon name="access" size="xs" class="text-emerald-500" />

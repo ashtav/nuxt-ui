@@ -27,8 +27,8 @@
                             <input type="checkbox" :checked="isAllSelected"
                                 @click.stop
                                 @change="toggleSelectAll"
-                                class="peer absolute inset-0 h-4 w-4 shrink-0 appearance-none rounded-[4px] border transition-all focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 dark:focus:ring-offset-slate-950 cursor-pointer"
-                                :class="isAllSelected ? 'border-emerald-500 bg-emerald-500' : 'border-slate-300 dark:border-theme-border bg-theme-input'" />
+                                class="peer absolute inset-0 h-4 w-4 shrink-0 appearance-none rounded-[4px] border transition-all focus:outline-none focus:ring-2 focus:ring-theme-primary focus:ring-offset-2 dark:focus:ring-offset-slate-950 cursor-pointer"
+                                :class="isAllSelected ? 'border-theme-primary bg-theme-primary' : 'border-slate-300 dark:border-theme-border bg-theme-input'" />
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
                                 class="pointer-events-none h-3 w-3 text-white transition-all duration-150 relative z-10"
@@ -196,8 +196,8 @@
                                     <input type="checkbox" :checked="isSelected(item)"
                                         @click.stop
                                         @change="toggleSelectRow(item)"
-                                        class="peer absolute inset-0 h-4 w-4 shrink-0 appearance-none rounded-[4px] border transition-all focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 dark:focus:ring-offset-slate-950 cursor-pointer"
-                                        :class="isSelected(item) ? 'border-emerald-500 bg-emerald-500' : 'border-slate-300 dark:border-theme-border bg-theme-input'" />
+                                        class="peer absolute inset-0 h-4 w-4 shrink-0 appearance-none rounded-[4px] border transition-all focus:outline-none focus:ring-2 focus:ring-theme-primary focus:ring-offset-2 dark:focus:ring-offset-slate-950 cursor-pointer"
+                                        :class="isSelected(item) ? 'border-theme-primary bg-theme-primary' : 'border-slate-300 dark:border-theme-border bg-theme-input'" />
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
                                         stroke="currentColor" stroke-width="3" stroke-linecap="round"
                                         stroke-linejoin="round"
@@ -285,7 +285,7 @@
                         <button v-else @click="changePage(Number(p))" :class="[
                             'w-8 h-8 flex items-center justify-center text-xs font-semibold rounded-lg transition-all select-none cursor-pointer',
                             props.currentPage === p
-                                ? 'bg-emerald-600 text-white'
+                                ? 'bg-theme-primary text-white shadow-2xs font-bold'
                                 : 'border border-theme-border text-slate-600 dark:text-slate-350 hover:bg-slate-50 dark:hover:bg-white/[0.04]'
                         ]">
                             {{ p }}
@@ -1262,7 +1262,7 @@ $dt-breakpoint: 768px;
     // Light mode design system
     --dt-text: #334155; // slate-700
     --dt-text-muted: #64748b; // slate-500 (slate-455)
-    --dt-accent: #059669; // emerald-600
+    --dt-accent: var(--primary, #2c3e2d);
     --dt-sort-icon-inactive: #cbd5e1; // slate-300
     --dt-head-bg: transparent;
     --dt-sticky-head-bg: var(--bg-card);
@@ -1677,7 +1677,7 @@ $dt-breakpoint: 768px;
 :global(.dark) .dtable {
     --dt-text: #cbd5e1; // slate-300
     --dt-text-muted: #64748b; // slate-500
-    --dt-accent: #34d399; // emerald-400
+    --dt-accent: var(--primary, #7d9e7e);
     --dt-sort-icon-inactive: #334155; // slate-700
     --dt-head-bg: transparent;
     --dt-sticky-head-bg: var(--bg-card);

@@ -33,6 +33,8 @@ const ALIASES: Record<string, string> = {
     'bank-note-01': 'wallet-02',
     'banknote': 'wallet-02',
     'contract': 'contracts',
+    'plus': 'plus-sign',
+    'add': 'plus-sign',
     'plus-circle': 'add-circle',
     'minus-circle': 'remove-circle',
     'building-07': 'building-03',

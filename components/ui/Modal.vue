@@ -83,7 +83,7 @@
 
             <!-- Tabs (Sticky & Full-width) -->
             <div v-if="tabs && tabs.length > 0" ref="tabsContainerRef" @wheel="handleTabsWheel"
-              class="flex border-b border-theme-border bg-white dark:bg-theme-card sticky top-0 z-10 shrink-0 overflow-x-auto overflow-y-hidden scrollbar-none">
+              class="flex border-b border-slate-200 dark:border-slate-800/80 bg-white dark:bg-theme-card sticky top-0 z-10 shrink-0 overflow-x-auto overflow-y-hidden scrollbar-none">
               <button v-for="(tab, index) in tabs" :key="tab.id" type="button" :disabled="tab.disabled"
                 class="py-3 text-xs transition-all relative shrink-0 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:text-gray-400"
                 :class="[
